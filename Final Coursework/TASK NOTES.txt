@@ -1,0 +1,59 @@
+ Question 1(CODED): complete
+
+Question 2: take integer from user
+factorilize
+reverse
+for loop storing repetitions for linear search
+breaking when number is more than 0 
+print number of repitiions
+
+Question 3:(CODED)
+take an integer
+square root the integer
+round down to nearest round number
+times te number by itself
+print result
+
+Question 4:
+learn big o notation
+show big o notation for week 1 tasks
+
+Question 5:
+
+Question 6:
+split string into words using split.word(might have to change to something else
+reverse list
+print list
+big o notation
+
+question 7:
+
+take number
+divide by 1
+try dividing by other numbers
+make recursive
+if prime say
+
+question 8:
+
+create dict with vowels
+take word
+check word for vowels
+remove vowels from word
+print word
+
+Question 9:
+take list
+make sure list is sorted 
+run binary search finding a number between set bounds
+if found output true
+
+Question 10:
+run linear search list
+compare two numbers next to each other
+if 2nd number is larger than the 1st add both to the new list
+contiue adding the same list if the next numbers are larger than the priors
+break when a smaller number occurs
+do this till the end of list
+compare all lists gathered from linear search
+output largest list
