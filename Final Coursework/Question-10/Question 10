@@ -1,3 +1,5 @@
+###QUESTION 10###
+
 givenList = [1, 2, 3, 4, 1, 5, 1, 6, 7, 6, 5]
 
 def subSequence(givenList):
@@ -23,4 +25,17 @@ print("Original List: " + str(givenList))
 print("Sorted Lists: " + str(sortedLists))
 print("The sub-sequence with the maximum length is: " + str(sortedLists[0]))
 print("The length of the largest sub-sequence is: " + str(len(sortedLists[0])))
+
+"""Description"""
+
+"""This is a program to extract the largest sub-sequence in an ascending order from a given sequence.
+It works by iterating through each element in a list e.g. [1,2,3,1,5] and calculating whether it
+is larger than the previous element, if so add to list. If the element is smaller, a new list is
+created. Once iterated through all of the elements within the list. A list containing the sub lists
+is printed. The largest is then printed along with the number of elements in the largest sub-sequence.
+"""
+
+
+"""Big O"""
+"""The big O notation for this question is 0(n^2)"""
 
