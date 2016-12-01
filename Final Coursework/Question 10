@@ -1,0 +1,26 @@
+givenList = [1, 2, 3, 4, 1, 5, 1, 6, 7, 6, 5]
+
+def subSequence(givenList):
+    """Function to find the sublist within a list"""
+    sortedLists = [] # List to hold all the sub-sequences within a list
+    currentSeq = [] # List to hold the current appended list, sub-sequence within, current sub-sequence
+    if not givenList: # If there are no elements in list, exit
+        return print("List is empty")
+    for i in range(len(givenList)): # Iterate through elements on list
+        if(len(currentSeq) >= 1): # Check if there is more than 1 element in list, if true, check if obeys sequence order
+            curList = currentSeq # Storing list in temp pointer for int needs
+            curList = curList[len(currentSeq) - 1] # Storing a comparable int for below if statement
+            if(givenList[i] < curList): # If the current element is smaller, then move list to sortedLists
+                sortedLists.append(currentSeq) # Adds the current sub-sequence list to the list of lists
+                currentSeq = [] # Reset the current sub-sequence list
+        currentSeq.append(givenList[i]) # Add the current selected element of the the original list to the current list
+    sortedLists.append(currentSeq) # Adds the final list to the sorted lists
+    return sortedLists
+
+sortedLists = subSequence(givenList)
+sortedLists.sort(key=len, reverse=True) # Sort into order, longest lists in ascending order
+print("Original List: " + str(givenList))
+print("Sorted Lists: " + str(sortedLists))
+print("The sub-sequence with the maximum length is: " + str(sortedLists[0]))
+print("The length of the largest sub-sequence is: " + str(len(sortedLists[0])))
+
