@@ -1,55 +1,45 @@
-__author__ = 'Callum'
-'''Write a recursive function (pseudocode and code) to check if a number n is prime (hint:
-check whether n is divisible by any number below n).'''
+###QUESTION 7###
 
-#take number
+givenInt = int(input(("Type an integer: ")))
 
-
-
-"""def primeNoChecker:
-    for number in number:
-        primeNo2 = primeNo2-
-
-        if primeNo / primeNo2 ="""
-
-"""def primeNoChecker(primeNo):
-    #check that the prime number is more than 1
-    if primeNo <= 1:
-        return("Not Applicabable")
-    #check that the no is more than the lowest prime number
+def primeCheck(givenInt, primeDiv):
+    """Function to check whether a given integer is a prime number or not"""
+    if primeDiv == 1: # If the prime numbers division has reached 1 it cannot be divided by anything but 1 and itself
+        return True # Return true, the number is prime
     else:
-        if 2 >= primeNo:
-            print(primeNo)
+        if givenInt % primeDiv ==0: # If givenInt can be divided by primeDiv without leaving a remainder
+            return False # If remainder is found the number can be divided by itself and other numbers, not prime
         else:
-            if primeNo == 2:
-#if primeNo it is
-#else
+            return primeCheck(givenInt,primeDiv-1) # Recursively return to beginning of function
+
+if (not primeCheck(givenInt,givenInt-1)): # If primecheck has not been returned, it is not a prime number
+    print ("this number is not a  prime number")
+else: # Else the number is prime
+    print("this number is a prime number")
+
+"""Pseudocode"""
+
+"""
+FUNCTION primeCheck(INPUT, primeDIV):
+    IF primeDiv = 1:
+        RETURN TRUE
+    ELSE:
+        IF INPUT % primeDiv = 0:
+            RETURN FALSE
+        ELSE:
+            RETURN primeCheck(INPUT, primeDiv-1)
+
+IF NOT primeCheck(INPUT,INPUT-1):
+    RETURN FALSE
+ELSE:
+    RETURN TRUE
 """
 
-primeNo = int(input(("Type an integer: ")))
+"""Description"""
+"""This recursive program checks if a given integer is prime. It works by taking a dividing variable
+that on every recursive loop -1 from its value, meaning that the program is continuely counting down
+through possible divisions till it reaches 1. If it reaches 1 the number is prime. However if it is
+able to divide and leave no remainder the number is not a prime."""
 
-def primeNoChecker(primeNo, primeDiv):
-    if primeDiv == 1:
-        return True
-    else:
-        if primeNo % primeDiv ==0:
-            return False
-        else:
-            return primeNoChecker(primeNo,primeDiv-1)
-
-
-
-
-if (not primeNoChecker(primeNo,primeNo-1)):
-    print ("this number is not a  prime number")
-
-else:
-    print("this number is a prime numeber")
-#try dividing by other numbers
-
-
-#make recursive
-
-
-#if prime say
-
+"""Big O Notation"""
+"""The big o notation for this question is 0(n)"""
