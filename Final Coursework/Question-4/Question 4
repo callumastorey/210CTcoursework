@@ -1,0 +1,22 @@
+###QUESTION 4###
+
+"""
+Big O Notations
+
+
+Question 1:
+In question 1 we have a function that contains one for loop. Because
+this for loop can run any number of times, dependant on given variables
+the big o notation is 0(n).
+
+Question 2:
+In question2 we have 2 functions that both contain 1 while loop, if there
+was a nested while loop we would have a different result as our worst case
+scenario but in this case the big o notation is also 0(n).
+
+Question 3:
+This question is a bit different, rather than having a for or while loop, the
+function purely contains 4 lines of code that does one job. Therefore this
+function can only run once. This means we have a big o notation of 0(1).
+
+"""
