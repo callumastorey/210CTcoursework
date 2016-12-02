@@ -1,0 +1,111 @@
+###QUESTION 13###
+
+class Vertex:
+    """Class for the vertex attributes"""
+    def __init__(self,n) :
+        self.name = n #first of 2 parts for a vertex, this is the name
+        self.neighbours = list() # This is the list of neighbours of the vertex
+
+    def addNeighbour(self,v):
+        if v not in self.neighbours:
+            self.neighbours.append(v)
+            self.neighbours.sort()
+
+class Graph:
+    """Class for the Graph vertices and edges"""
+    vertices = {} # The dictionary containing the vertices
+
+    def addVertex(self, vertex):
+        """Function to add vertices"""
+        if isinstance(vertex, Vertex) and vertex.name not in self.vertices: # Ensuring that the vertex trying to be added
+            self.vertices[vertex.name] = vertex                             # is a vertex and does not already exist
+            return True # If criteria is met return True and add vertex to vertex dictionary
+        else:
+            return False
+
+
+    def addEdge(self,u,v):
+        """Function to add edges"""
+        if u in self.vertices and v in self.vertices: # Check to make sure the correct data has been given
+            for key, value in self.vertices.items():
+                if key == u:
+                    value.addNeighbour(v)
+                if key == v:
+                    value.addNeighbour(u)
+            return True # Succsessfully added an edge
+        else:
+            return False
+
+    def printGraph(self):
+        """Function to print graph"""
+        for key in sorted(list(self.vertices.keys())):
+            print(key + str(self.vertices[key].neighbours))
+
+g = Graph()
+g.addVertex(Vertex('A'))
+g.addVertex(Vertex('B'))
+g.addVertex(Vertex('C'))
+g.addVertex(Vertex('D'))
+g.addVertex(Vertex('E'))
+g.addVertex(Vertex('F'))
+g.addVertex(Vertex('G'))
+g.addVertex(Vertex('H'))
+g.addVertex(Vertex('I'))
+g.addVertex(Vertex('J'))
+
+edges = ['AB','AE', 'BF', 'CG', 'DE', 'DH', 'EH', 'FG', 'FI','FJ', 'GJ', 'HI']
+for edge in edges:
+    g.addEdge(edge[:1], edge[1:])
+
+g.printGraph()
+
+"""Pseudocode"""
+
+"""
+CLASS Vertex:
+    FUNCTION INIT
+        name
+        neighbours
+
+    FUNCTION addNeighbour(v):
+        IF V NOT IN neighbours:
+            neighbours.APPEND(v)
+            neighbours.SORT()
+
+CLASS Graph:
+    FUNCTION addVertex(vertex):
+    IF vertex NOT IN SELF.vertices
+        SELF.v = vertex
+        RETURN TRUE
+    ELSE:
+        RETURN FALSE
+
+    FUNCTION addEdge(u,v):
+        FOR key, value IN SELF.vertices.items():
+            IF key == u:
+                value.addNeighbour(V)
+            IF key == v:
+                value.addNeighbour(u)
+        RETURN TRUE
+    RETURN
+
+    FUNCTION printGraph():
+        FOR key IN vertices:
+            PRINT key
+ADD VERTTICES
+ADD EDGES
+
+CALL printGraph()
+
+"""
+
+"""Description"""
+"""
+For question 13 I was tasked with writing the pseudocode and implementing an unweighted graph data structure.
+I used the adjacency list, and used 2 main classes; graph and vertex. These each held their own respective
+functions that were then called at the end.
+
+"""
+
+"""Big O Notation"""
+"""The big o notation for this question is 0(n^2)"""
