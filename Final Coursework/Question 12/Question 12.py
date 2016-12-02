@@ -1,79 +1,68 @@
-__author__ = 'Callum'
+###QUESTION 12###
 
-class BinTreeNode(object):
-
+class Node(object):
+    """The Class to hold and manage properties of a node"""
     def __init__(self, value):
         self.value=value
         self.left=None
         self.right=None
 
-
-
-def tree_insert( tree, item):
-    if tree==None:
-        tree=BinTreeNode(item)
+def treeInsert(tree, item):
+    """Function to insert nodes into the tree"""
+    if tree == None:
+        tree = Node(item)
     else:
         if(item < tree.value):
             if(tree.left==None):
-                tree.left=BinTreeNode(item)
+                tree.left=Node(item)
             else:
-                tree_insert(tree.left,item)
+                treeInsert(tree.left,item)
         else:
             if(tree.right==None):
-                tree.right=BinTreeNode(item)
+                tree.right=Node(item)
             else:
-                tree_insert(tree.right,item)
+                treeInsert(tree.right,item)
     return tree
 
 def postorder(tree):
+    """Function to traverse the tree"""
     if(tree.left!=None):
         postorder(tree.left)
     if(tree.right!=None):
         postorder(tree.right)
     print (tree.value)
 
-
-'''def in_order(tree):
-    if(tree.left!=None):
-        in_order(tree.left)
-    print (tree.value)
-    if(tree.right!=None):
-        in_order(tree.right)'''
-
-#The iterative inorder function
-def in_order(tree):
-    current = tree
-    s=[]
-    done = 0
-
-    while(not done):
-
-        if current is not None:
-
-            s.append(current)
-
-            current = current.left
-
+def inOrder(tree):
+    """Function to order the tree iteratively"""
+    currentNode = tree
+    holder=[] # H
+    complete = False
+    while not complete:
+        while currentNode:
+            holder.append(currentNode)
+            currentNode = currentNode.left # Display left node
         else:
-            if(len(s) >0 ):
-                current = s.pop()
-                print (current.value),
-
-                current = current.right
-
+            if(len(holder) >0 ): # If holder is empty
+                    currentNode = holder.pop() # removing and returning last element from list
+                    print (currentNode.value)
+                    currentNode = currentNode.right # Display right node
             else:
-                done = 1
-
-
-
+                complete = True
 
 if __name__ == '__main__':
+  t=treeInsert(None,6);
+  treeInsert(t,10)
+  treeInsert(t,5)
+  treeInsert(t,2)
+  treeInsert(t,3)
+  treeInsert(t,4)
+  treeInsert(t,11)
+  inOrder(t)
 
-  t=tree_insert(None,6);
-  tree_insert(t,10)
-  tree_insert(t,5)
-  tree_insert(t,2)
-  tree_insert(t,3)
-  tree_insert(t,4)
-  tree_insert(t,11)
-  in_order(t)
+"""Description"""
+"""With this question I was tasked with taking a given TREE_SORT algorithm which included an recursive
+INORDER function. I had to re-implement the INORDER function iteratively.
+"""
+
+"""Big O Notation"""
+"""The big o notation for this question is 0(n^2)"""
