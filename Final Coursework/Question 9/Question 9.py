@@ -1,20 +1,55 @@
-__author__ = 'Callum'
-"""Adapt the binary search algorithm so that instead of outputting whether
-a specific value was found, it outputs whether a value within an interval
-(specified by you) was found. Write the pseudocode and code and give the
-time complexity of the algorithm using the Big O notation.
+###Question 9###
+list = [2,3,5,7,9,13,16,19,25,34]
+lowNo = 17
+highNo = 22
+l = 0
+h = len(list)-1
 
-Example input: L = [2,3,5,7,9,13] low= 10 high = 14 Output: True"""
+def intvSearch(list,lowNo,highNo, l, h):
+    """Function to find out whether an integer between given intervals exists"""
+    while l <= h:
+        mid = (int(l + h) //2) # mid = low + high returned with an even number usig the // operator
+        if list[mid] >= lowNo and list[mid] <= highNo:
+            print("True")
+            return
+        elif highNo <= list[mid]:
+            return intvSearch(list,lowNo, highNo, l, mid-1) # Return to beginning of function midpoint - 1
 
-#take list
-list = [2,3,5,7,9,13]
-lowNo = 10
-highNo = 14
+        elif lowNo >= list[mid]:
+            return intvSearch(list, lowNo, highNo, mid+1, h)
+    print("False") # If able to exist loop, number has not been found within given range
+print(list)
+intvSearch(list,lowNo,highNo,l,h)
 
-#make sure list is sorted
+"""Pseudocode"""
 
-#run binary search finding a number between set bounds
+"""
+INPUT list
+INPUT lowNo
+INPUT highNo
+L = 0
+H = LENGTH(list)-1
 
-#if found output true
+FUNCTION intvSearch(list, lowNo, highNo, 1, h):
+            WHILE L <= H:
+                mid = (L+H)//2
+                IF list[mid] >= lowNo and list[mid] <= highNo:
+                    TRUE
+                    RETURN
+                ELIF highNo <= list[mid]:
+                    RETURN INTVSEARCH(list, lowNo, highNo, l ,mid-1):
+                ELIF highNo <= list[mid]:
+                    RETURN INTVSEARCH(list, lowNo, highNo, mid+1, h):
 
+CALL INTVSEARCH
 
+"""
+
+"""Description"""
+"""
+This program is an adapted binary search algorithm that checks whether an integer between given intervals exists.
+
+"""
+
+"""Big O Notation"""
+"""The big o notation for this question is 0(Log(n))"""
